@@ -1,0 +1,20 @@
+<app-template-viewer  [selectedTemplate] = "selectedTemplate"></app-template-viewer>
+<div class="ContentSideSections Implementation">
+    <p-dataTable [value]="templates" selectionMode="single" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [(selection)]="selectedTemplate" [contextMenu]="cm">
+        <p-column field="TEMPLATE_ID" header="Template ID" [sortable]="true" [filter]="true"></p-column>
+        <p-column field="TEMPLATE_HTML_ID" header="Template HTML ID" [sortable]="true" [filter]="true"></p-column>
+        <p-column field="NAME" header="Pub Name" [sortable]="true"[filter]="true"></p-column>        
+        <p-column field="TAG_ID" header="Tag ID" [sortable]="true"[filter]="true"></p-column>
+        <p-column field="NUMBER_OF_ADS" header="No. Of Ads" [sortable]="true"[filter]="true"> </p-column>
+        <p-column field="WIDTH" header="Width" [sortable]="true"[filter]="true"></p-column>
+        <p-column field="HEIGHT" header="Height" [sortable]="true"[filter]="true"></p-column>
+        <p-column field="USES_THUMBNAILS" header="Uses Thumbnails" [sortable]="true"[filter]="true"></p-column>
+        <p-column field="IMAGE_SIZE" header="Image Size" [sortable]="true"[filter]="true"></p-column>
+        <p-column field="SVN_REL_PATH" header="Svn Path" [sortable]="true"[filter]="true"></p-column>
+        <p-column field="PLATFORM" header="Platform" [sortable]="true"[filter]="true"></p-column>
+        <p-column field="AUTO_FIT" header="Is Responsive" [sortable]="true"[filter]="true"></p-column>
+        <p-column field="AUTO_FIT_DELAY" header="Auto Dealy" [sortable]="true"[filter]="true"></p-column>
+        <p-column field="LONG_ADCOPY" header="Is Mom" [sortable]="true"[filter]="true"></p-column>
+    </p-dataTable>
+    <p-contextMenu #cm [model]="contextMenuItems"></p-contextMenu>   
+</div>

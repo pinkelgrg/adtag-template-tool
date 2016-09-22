@@ -1,0 +1,17 @@
+export interface GridData {
+    TEMPLATE_ID;
+    TEMPLATE_HTML_ID;
+    NAME;
+    TAG_ID;
+    NUMBER_OF_ADS;
+    WIDTH;
+    HEIGHT;
+    USES_THUMBNAILS;
+    IMAGE_SIZE;
+    HTML_TEXT;
+    SVN_REL_PATH;
+    PLATFORM;
+    AUTO_FIT;
+    AUTO_FIT_DELAY;
+    LONG_ADCOPY;
+}

@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+.navbar.navbar-dark{
+    border-radius : 0;
+    background: #000;
+}
+.navbar .nav-item.active a{
+    background: #aaa;
+    color: #fff;
+}
