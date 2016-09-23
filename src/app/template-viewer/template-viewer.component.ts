@@ -36,9 +36,11 @@ export class TemplateViewerComponent implements OnInit {
       if(typeof templ.HEIGHT !== "undefined" && templ.HEIGHT !== null && templ.HEIGHT.toLowerCase() === 'h' ){
         this.iframeHeight = '100%';
       }
+
       if(typeof templ.WIDTH !== "undefined" && templ.WIDTH !== null && templ.WIDTH.toLowerCase() === 'w'){
         this.iframeWidth = '100%';
       }
+      
       let templateStr : string = templ.HTML_TEXT;
       let content = templateStr;
       let doc =  this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
