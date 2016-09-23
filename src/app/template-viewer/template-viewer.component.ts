@@ -26,7 +26,7 @@ export class TemplateViewerComponent implements OnInit {
       
   }
   ngAfterViewInit() {    
-
+    
   }
 
   updateIframeWithSelectedTemplate(templ: GridData){
