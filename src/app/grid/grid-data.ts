@@ -13,5 +13,6 @@ export interface GridData {
     PLATFORM;
     AUTO_FIT;
     AUTO_FIT_DELAY;
+    TEMPLATE_ENGINE_ID;
     LONG_ADCOPY;
 }

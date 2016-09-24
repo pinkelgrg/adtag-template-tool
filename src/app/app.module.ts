@@ -10,9 +10,10 @@ import { GridComponent } from './grid/grid.component';
 import { PropertyComponent } from './property/property.component';
 import { TemplateEditorComponent } from './template-editor/template-editor.component';
 import { GridDataService } from './services/grid-data.service';
+import { TemplateViewerComponent } from './template-viewer/template-viewer.component';
 
 import { DataTableModule, InputTextModule, ButtonModule, DialogModule, ContextMenuModule, PanelModule } from 'primeng/primeng';
-import { TemplateViewerComponent } from './template-viewer/template-viewer.component';
+
 
 @NgModule({
   declarations: [
@@ -20,8 +21,7 @@ import { TemplateViewerComponent } from './template-viewer/template-viewer.compo
     GridComponent,
     PropertyComponent,
     TemplateEditorComponent,
-    TemplateViewerComponent,
-    
+    TemplateViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +37,7 @@ import { TemplateViewerComponent } from './template-viewer/template-viewer.compo
   ],
   providers: [
     appRoutingProviders,
-    GridDataService
+    GridDataService    
   ],
   bootstrap: [AppComponent]
 })

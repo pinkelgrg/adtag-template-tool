@@ -10,13 +10,13 @@ export class TemplateViewerComponent implements OnInit {
   @Input() selectedTemplate: GridData;
   selectedTemplateHTML = "";
   
-  
   @ViewChild('iframe') iframe:ElementRef;
   title: string = 'adTag Template';
   iframeHeight: string = "100%";
   iframeWidth: string = "100%";
   
   constructor() { }
+
   ngOnChanges(changed){
     if(typeof changed.selectedTemplate.currentValue !== "undefined"){
       this.updateIframeWithSelectedTemplate(changed.selectedTemplate.currentValue);
@@ -29,7 +29,8 @@ export class TemplateViewerComponent implements OnInit {
     
   }
 
-  updateIframeWithSelectedTemplate(templ: GridData){
+  updateIframeWithSelectedTemplate(templ: GridData) {
+
     if(typeof templ !== "undefined" && templ !== null){
       this.iframeHeight = templ.HEIGHT || '100%';
       this.iframeWidth = templ.WIDTH || '100%';
@@ -40,13 +41,20 @@ export class TemplateViewerComponent implements OnInit {
       if(typeof templ.WIDTH !== "undefined" && templ.WIDTH !== null && templ.WIDTH.toLowerCase() === 'w'){
         this.iframeWidth = '100%';
       }
-      
+
       let templateStr : string = templ.HTML_TEXT;
       let content = templateStr;
-      let doc =  this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
-      doc.open();
-      doc.write(content);
-      doc.close();
+      // let content = null;
+      // let content = this.templateParserService.beginTemplateValidation(templ);
+      
+      if(content === null){
+
+      }else{
+        let doc =  this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
+        doc.open();
+        doc.write(content);
+        doc.close();
+      }
     }
   }
 }
