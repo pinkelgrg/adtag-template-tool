@@ -58,9 +58,6 @@ export class TemplateParser {
                 break;
         }
         return parsedHtml;
-
-
-
     }
     parseUsingStringInterpolation(){
         let ads = this.normalAds;
@@ -91,7 +88,7 @@ export class TemplateParser {
         return html;
     }
     parseUsingHandleBars (){
-        
+
     }
     getTemplateEngine (){
         try{        
