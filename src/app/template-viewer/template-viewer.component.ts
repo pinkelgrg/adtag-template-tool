@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { GridData } from '../grid/grid-data';
-
+import {TemplateParser} from '../utils/template-parser';
 @Component({
   selector: 'app-template-viewer',
   templateUrl: './template-viewer.component.html',
@@ -9,7 +9,8 @@ import { GridData } from '../grid/grid-data';
 export class TemplateViewerComponent implements OnInit {
   @Input() selectedTemplate: GridData;
   selectedTemplateHTML = "";
-  
+  templateParser = new TemplateParser();
+
   @ViewChild('iframe') iframe:ElementRef;
   title: string = 'adTag Template';
   iframeHeight: string = "100%";
@@ -31,30 +32,37 @@ export class TemplateViewerComponent implements OnInit {
 
   updateIframeWithSelectedTemplate(templ: GridData) {
 
+    let content = this.templateParser.beginTemplateValidation(templ);
+    
+    if(content === null){
+
+    }else{
+      let doc =  this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
+      doc.open();
+      doc.write(content);
+      doc.close();
+    }
     if(typeof templ !== "undefined" && templ !== null){
       this.iframeHeight = templ.HEIGHT || '100%';
       this.iframeWidth = templ.WIDTH || '100%';
       if(typeof templ.HEIGHT !== "undefined" && templ.HEIGHT !== null && templ.HEIGHT.toLowerCase() === 'h' ){
-        this.iframeHeight = '100%';
+        this.iframeHeight = this.getActualUnitHeightByElement();
       }
 
       if(typeof templ.WIDTH !== "undefined" && templ.WIDTH !== null && templ.WIDTH.toLowerCase() === 'w'){
         this.iframeWidth = '100%';
       }
+    }
+  }
+  getActualUnitHeightByElement (){
+    var wnd = this.iframe.nativeElement.contentWindow;
+    var doc = this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow.document;
+    var body = doc.body || doc.documentElement;
 
-      let templateStr : string = templ.HTML_TEXT;
-      let content = templateStr;
-      // let content = null;
-      // let content = this.templateParserService.beginTemplateValidation(templ);
-      
-      if(content === null){
-
-      }else{
-        let doc =  this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
-        doc.open();
-        doc.write(content);
-        doc.close();
-      }
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+      return doc.body["scrollHeight"];
+    } else {
+      return body["offsetHeight"];
     }
   }
 }
