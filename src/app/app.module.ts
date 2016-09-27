@@ -12,14 +12,14 @@ import { TemplateEditorComponent } from './template-editor/template-editor.compo
 import { GridDataService } from './services/grid-data.service';
 import { TemplateViewerComponent } from './template-viewer/template-viewer.component';
 
-import { 
+import {
   DataTableModule,
   InputTextModule,
   ButtonModule,
   DialogModule,
   ContextMenuModule,
   PanelModule,
-  DropdownModule 
+  DropdownModule
 } from 'primeng/primeng';
 
 
@@ -46,7 +46,7 @@ import {
   ],
   providers: [
     appRoutingProviders,
-    GridDataService    
+    GridDataService
   ],
   bootstrap: [AppComponent]
 })

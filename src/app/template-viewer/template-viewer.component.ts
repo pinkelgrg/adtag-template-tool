@@ -8,61 +8,56 @@ import {TemplateParser} from '../utils/template-parser';
 })
 export class TemplateViewerComponent implements OnInit {
   @Input() selectedTemplate: GridData;
-  selectedTemplateHTML = "";
+  selectedTemplateHTML = '';
   templateParser = new TemplateParser();
 
-  @ViewChild('iframe') iframe:ElementRef;
+  @ViewChild('iframe') iframe: ElementRef;
   title: string = 'adTag Template';
-  iframeHeight: string = "100%";
-  iframeWidth: string = "100%";
-  
+  iframeHeight: string = '100%';
+  iframeWidth: string = '100%';
+
   constructor() { }
 
-  ngOnChanges(changed){
-    if(typeof changed.selectedTemplate.currentValue !== "undefined"){
+  ngOnChanges(changed) {
+    if (typeof changed.selectedTemplate.currentValue !== 'undefined') {
       this.updateIframeWithSelectedTemplate(changed.selectedTemplate.currentValue);
     }
   }
   ngOnInit() {
-      
-  }
-  ngAfterViewInit() {    
-    
-  }
 
+  }
   updateIframeWithSelectedTemplate(templ: GridData) {
 
     let content = this.templateParser.beginTemplateValidation(templ);
-    
-    if(content === null){
 
-    }else{
+    if (content === null) {
+
+    } else {
       let doc =  this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
       doc.open();
       doc.write(content);
       doc.close();
     }
-    if(typeof templ !== "undefined" && templ !== null){
+    if (typeof templ !== 'undefined' && templ !== null) {
       this.iframeHeight = templ.HEIGHT || '100%';
       this.iframeWidth = templ.WIDTH || '100%';
-      if(typeof templ.HEIGHT !== "undefined" && templ.HEIGHT !== null && templ.HEIGHT.toLowerCase() === 'h' ){
+      if ( typeof templ.HEIGHT !== 'undefined' && templ.HEIGHT !== null && templ.HEIGHT.toLowerCase() === 'h') {
         this.iframeHeight = this.getActualUnitHeightByElement();
       }
 
-      if(typeof templ.WIDTH !== "undefined" && templ.WIDTH !== null && templ.WIDTH.toLowerCase() === 'w'){
+      if (typeof templ.WIDTH !== 'undefined' && templ.WIDTH !== null && templ.WIDTH.toLowerCase() === 'w') {
         this.iframeWidth = '100%';
       }
     }
   }
-  getActualUnitHeightByElement (){
-    var wnd = this.iframe.nativeElement.contentWindow;
-    var doc = this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow.document;
-    var body = doc.body || doc.documentElement;
+  getActualUnitHeightByElement () {
+    let doc = this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow.document;
+    let body = doc.body || doc.documentElement;
 
-    if (navigator.appName == 'Microsoft Internet Explorer') {
-      return doc.body["scrollHeight"];
+    if (navigator.appName === 'Microsoft Internet Explorer') {
+      return doc.body['scrollHeight'];
     } else {
-      return body["offsetHeight"];
+      return body['offsetHeight'];
     }
   }
 }

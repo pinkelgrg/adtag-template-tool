@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers, Response} from '@angular/http';
+import { Http } from '@angular/http';
 import { GridData } from '../grid/grid-data';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -10,20 +10,20 @@ export class GridDataService {
 
   constructor(private http: Http) {}
 
-  getGridsData(){
+  getGridsData() {
     return this.http.get('app/services/mock-grid_data.json')
     .toPromise()
     .then(res => <GridData[]> res.json())
     .then(data => { return data; });
   }
 
-  setSelectedTemplate(templ: GridData){
+  setSelectedTemplate(templ: GridData) {
 
     this.selectedTemplate = templ;
-    
+
   }
 
-  getSelectedTemplate(){
+  getSelectedTemplate() {
 
     return this.selectedTemplate;
 

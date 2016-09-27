@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   currentView  = 'home';
 
-  propertyMenuClicked (){
-    this.currentView = 'property';    
+  propertyMenuClicked () {
+    this.currentView = 'property';
   }
-  homeMenuClicked (){
+  homeMenuClicked () {
     this.currentView = 'home';
   }
 }
