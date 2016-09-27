@@ -16,6 +16,7 @@
       "mobile": false,
       "styles": [
         "styles.css",
+        "assets/css/font-awesome.css",
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/primeng/resources/primeng.css",
         "../node_modules/primeng/resources/themes/omega/theme.css"

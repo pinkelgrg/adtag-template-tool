@@ -12,7 +12,15 @@ import { TemplateEditorComponent } from './template-editor/template-editor.compo
 import { GridDataService } from './services/grid-data.service';
 import { TemplateViewerComponent } from './template-viewer/template-viewer.component';
 
-import { DataTableModule, InputTextModule, ButtonModule, DialogModule, ContextMenuModule, PanelModule } from 'primeng/primeng';
+import { 
+  DataTableModule,
+  InputTextModule,
+  ButtonModule,
+  DialogModule,
+  ContextMenuModule,
+  PanelModule,
+  DropdownModule 
+} from 'primeng/primeng';
 
 
 @NgModule({
@@ -33,7 +41,8 @@ import { DataTableModule, InputTextModule, ButtonModule, DialogModule, ContextMe
     ButtonModule,
     DialogModule,
     ContextMenuModule,
-    PanelModule
+    PanelModule,
+    DropdownModule
   ],
   providers: [
     appRoutingProviders,

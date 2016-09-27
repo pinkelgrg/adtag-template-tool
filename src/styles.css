@@ -7,3 +7,13 @@
     background: #aaa;
     color: #fff;
 }
+.fa-caret-down:before{
+    float : left;
+}
+
+div.ui-dropdown .ui-dropdown-trigger{
+    width: 20px;
+}
+.templProperty{
+    width: 600px;
+}
