@@ -111,7 +111,7 @@ export class TemplateParser {
             } else if (this.templateData.LONG_ADCOPY === 0) {
                 ads = this.normalAds;
             }else {
-                this.errorMessages.push('Selected template is missing value for LongAd Copy');
+                this.errorMessages.push('Selected template is missing valid value for LongAd Copy');
                 return null;
             }
 
