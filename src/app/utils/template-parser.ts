@@ -103,22 +103,19 @@ export class TemplateParser {
         }
         return parsedHtml;
     }
-    parseUsingStringInterpolation() {
-        let ads = this.normalAds;
-        try {
-            if (this.templateData.LONG_ADCOPY === 1) {
-                ads = this.longAds;
+    //returns appropriate ad for regular or mom ads
+    getCorrectAdFormat () {
+        if (this.templateData.LONG_ADCOPY === 1) {
+                return this.longAds;
             } else if (this.templateData.LONG_ADCOPY === 0) {
-                ads = this.normalAds;
+                return this.normalAds;
             }else {
                 this.errorMessages.push('Selected template is missing valid value for LongAd Copy');
                 return null;
             }
-
-        }catch (e) {
-            return null;
-        }
-
+    }
+    parseUsingStringInterpolation() {
+        let ads = this.getCorrectAdFormat();
         let adCount = this.templateData.NUMBER_OF_ADS;
         let html = this.templateData.HTML_TEXT;
         for (let n = 1; n <= adCount; n++) {
@@ -133,7 +130,23 @@ export class TemplateParser {
         return html;
     }
     parseUsingHandleBars () {
+        let ads = this.getCorrectAdFormat();
+        let adCount = this.templateData.NUMBER_OF_ADS;
+        let html = this.templateData.HTML_TEXT;
+        let data=[];
+        for(let i =0; i<adCount; i++){
+            data[i]={};
+            data[i].impressionUrl = '/assets/images/tracking.gif?ad=' + i.toString() + '&_' + (new Date()).getTime().toString(); 
+            data[i].clickUrl = 'http://www.admarketplace.com/?test=' + i.toString();
+            data[i].title = ads[adCount - i].title;
+            data[i].displayUrl = 'www' + i.toString() + '.admarketplace.com/hello-world';
+            data[i].description = ads[adCount - i].description;
+        };
+        
 
+    
+
+        debugger;
     }
     getTemplateEngine () {
         try {

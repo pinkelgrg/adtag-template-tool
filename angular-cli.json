@@ -21,7 +21,9 @@
         "../node_modules/primeng/resources/primeng.css",
         "../node_modules/primeng/resources/themes/omega/theme.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/handlebars/dist/handlebars.min.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
