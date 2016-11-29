@@ -31,3 +31,5 @@ testem.log
 Thumbs.db
 
 mock-grid_data.json
+.metadata
+settings.json

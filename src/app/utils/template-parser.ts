@@ -134,19 +134,29 @@ export class TemplateParser {
         let adCount = this.templateData.NUMBER_OF_ADS;
         let html = this.templateData.HTML_TEXT;
         let data=[];
-        for(let i =0; i<adCount; i++){
-            data[i]={};
-            data[i].impressionUrl = '/assets/images/tracking.gif?ad=' + i.toString() + '&_' + (new Date()).getTime().toString(); 
-            data[i].clickUrl = 'http://www.admarketplace.com/?test=' + i.toString();
-            data[i].title = ads[adCount - i].title;
-            data[i].displayUrl = 'www' + i.toString() + '.admarketplace.com/hello-world';
-            data[i].description = ads[adCount - i].description;
-        };
         
-
-    
-
+        for(let i =0; i<adCount; i++){
+            let temp={
+                "impressionUrl" : '/assets/images/tracking.gif?ad=' + i.toString() + '&_' + (new Date()).getTime().toString(),
+                "clickUrl" : 'http://www.admarketplace.com/?test=' + i.toString(),
+                "title" : ads[adCount - i].title,                
+                "displayUrl" : 'www' + i.toString() + '.admarketplace.com/hello-world',
+                "description" : ads[adCount - i].description
+            }
+            data.push(temp);
+            
+        };
         debugger;
+        var a = 10;
+        // let startPos = html.indexOf("{{#each .}}");
+        // let endPos = html.indexOf("{{/each}}") + 9; 
+
+        // let handlebarTemplate = html.substring(startPos,endPos);
+        // let compileTemplate = Handlebars.compile(handlebarTemplate)
+         
+        // let parser = new DOMParser();
+        // html = parser.parseFromString(html, "text/html");
+        
     }
     getTemplateEngine () {
         try {
